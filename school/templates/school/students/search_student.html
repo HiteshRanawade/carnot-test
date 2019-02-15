@@ -1,0 +1,43 @@
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<h2>Task 3:</h2>
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>School Name</th>
+            <th>School Phone</th>
+            <th>Books Read</th>
+            <th>Total No. of Book pages read</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in filter.qs %}
+            <tr>
+              <td>{{ student.first_name }}</td>
+              <td>{{ student.last_name }}</td>
+              <td>{{ student.email }}</td>
+              <td>{{ student.get_gender_display }}</td>
+              <td>{{ student.school.name }}</td>
+              <td>{{ student.school.phone }}</td>
+              <td>{{ student.books.title }}</td>
+              <td>{{ student.books.no_of_pages }}</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="5">No data</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </ul>
+{% endblock %}

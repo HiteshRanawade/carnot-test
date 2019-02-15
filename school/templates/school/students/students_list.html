@@ -1,0 +1,22 @@
+{% load static %}
+{% block content %}
+    
+    <div id="main">
+        <h1>Students</h1>
+        <table>
+            <thead>
+                <th>Student Name</th>
+                <th>Email</th>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td><p>{{ student.first_name }}</p></td>
+                    <td><p>{{ student.email }}</p></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+    </div>
+{% endblock %}
